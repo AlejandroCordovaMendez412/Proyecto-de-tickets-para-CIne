@@ -1,0 +1,15 @@
+<h1 class="h3 mb-4">Asignar películas a salas</h1>
+<div *ngIf="mensaje" class="alert alert-danger">{{ mensaje }}</div><div *ngIf="exito" class="alert alert-success">{{ exito }}</div>
+<div class="card border-0 shadow-sm mb-4"><div class="card-body">
+  <form [formGroup]="form" (ngSubmit)="asignar()" class="row g-3" novalidate>
+    <div class="col-md-6"><label class="form-label">Película</label><select class="form-select" formControlName="idPelicula"><option [ngValue]="0">Seleccione...</option><option *ngFor="let pelicula of peliculas" [ngValue]="pelicula.idPelicula">{{ pelicula.nombre }}</option></select><div class="text-danger small" *ngIf="form.controls.idPelicula.touched && form.controls.idPelicula.invalid">Seleccione una película.</div></div>
+    <div class="col-md-6"><label class="form-label">Sala</label><select class="form-select" formControlName="idSalaCine"><option [ngValue]="0">Seleccione...</option><option *ngFor="let sala of salas" [ngValue]="sala.idSala">{{ sala.nombre }}</option></select><div class="text-danger small" *ngIf="form.controls.idSalaCine.touched && form.controls.idSalaCine.invalid">Seleccione una sala.</div></div>
+    <div class="col-md-6"><label class="form-label">Fecha publicación</label><input type="date" class="form-control" formControlName="fechaPublicacion"><div class="text-danger small" *ngIf="form.controls.fechaPublicacion.touched && form.controls.fechaPublicacion.invalid">La fecha de publicación es obligatoria.</div></div>
+    <div class="col-md-6"><label class="form-label">Fecha fin (opcional)</label><input type="date" class="form-control" formControlName="fechaFin"></div>
+    <div class="col-12"><button class="btn btn-success" type="submit">Asignar</button></div>
+  </form>
+</div></div>
+<div class="card border-0 shadow-sm"><div class="table-responsive"><table class="table table-hover align-middle mb-0">
+  <thead class="table-light"><tr><th>ID</th><th>Película</th><th>Sala</th><th>Publicación</th><th>Fin</th></tr></thead>
+  <tbody><tr *ngFor="let item of asignaciones"><td>{{ item.idAsignacion }}</td><td>{{ item.pelicula }}</td><td>{{ item.sala }}</td><td>{{ item.fechaPublicacion }}</td><td>{{ item.fechaFin || 'Sin fecha' }}</td></tr><tr *ngIf="asignaciones.length === 0"><td colspan="5" class="text-center text-secondary py-4">No hay asignaciones.</td></tr></tbody>
+</table></div></div>

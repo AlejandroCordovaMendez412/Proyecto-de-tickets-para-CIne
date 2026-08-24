@@ -1,0 +1,23 @@
+<div class="login-page d-flex align-items-center justify-content-center">
+  <div class="card shadow border-0 login-card">
+    <div class="card-body p-4 p-md-5">
+      <h1 class="h3 text-center mb-2">Cinema Admin</h1>
+      <p class="text-secondary text-center mb-4">Ingrese con las credenciales de demostración</p>
+      <div *ngIf="mensaje" class="alert alert-danger">{{ mensaje }}</div>
+      <form [formGroup]="form" (ngSubmit)="ingresar()" novalidate>
+        <div class="mb-3">
+          <label class="form-label">Usuario</label>
+          <input class="form-control" formControlName="usuario" autocomplete="username">
+          <div class="text-danger small" *ngIf="form.controls.usuario.touched && form.controls.usuario.invalid">El usuario es obligatorio.</div>
+        </div>
+        <div class="mb-4">
+          <label class="form-label">Contraseña</label>
+          <input type="password" class="form-control" formControlName="contrasena" autocomplete="current-password">
+          <div class="text-danger small" *ngIf="form.controls.contrasena.touched && form.controls.contrasena.invalid">La contraseña es obligatoria.</div>
+        </div>
+        <button class="btn btn-primary w-100" type="submit">Ingresar</button>
+      </form>
+      <p class="small text-secondary text-center mt-3 mb-0">admin / admin123</p>
+    </div>
+  </div>
+</div>

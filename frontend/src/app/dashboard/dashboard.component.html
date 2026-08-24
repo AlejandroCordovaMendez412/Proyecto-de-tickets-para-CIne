@@ -1,0 +1,7 @@
+<h1 class="h3 mb-4">Dashboard</h1>
+<div *ngIf="mensaje" class="alert alert-danger">{{ mensaje }}</div>
+<div class="row g-4" *ngIf="datos">
+  <div class="col-md-4"><div class="card metric-card border-0 shadow-sm h-100"><div class="card-body"><p class="text-secondary">Total de salas de cine</p><strong class="display-5">{{ datos.totalSalas }}</strong></div></div></div>
+  <div class="col-md-4"><div class="card metric-card border-0 shadow-sm h-100"><div class="card-body"><p class="text-secondary">Salas disponibles</p><strong class="display-5 text-success">{{ datos.totalSalasDisponibles }}</strong></div></div></div>
+  <div class="col-md-4"><div class="card metric-card border-0 shadow-sm h-100"><div class="card-body"><p class="text-secondary">Total de películas</p><strong class="display-5 text-primary">{{ datos.totalPeliculas }}</strong></div></div></div>
+</div>

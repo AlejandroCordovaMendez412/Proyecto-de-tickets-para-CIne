@@ -1,0 +1,9 @@
+@CinemaApi_HostAddress = http://localhost:5155
+
+GET {{CinemaApi_HostAddress}}/api/peliculas
+Accept: application/json
+
+###
+
+GET {{CinemaApi_HostAddress}}/swagger/v1/swagger.json
+Accept: application/json
