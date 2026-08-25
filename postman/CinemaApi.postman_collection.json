@@ -1,0 +1,50 @@
+{
+  "info": {
+    "_postman_id": "bb28bafd-5ef3-45c6-9ae2-cinema-api-2026",
+    "name": "Cinema API",
+    "description": "Colección completa para probar la API de la prueba técnica.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5155/api", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Peliculas",
+      "item": [
+        { "name": "Crear película", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"The Matrix\",\n  \"duracion\": 136\n}" }, "url": { "raw": "{{baseUrl}}/peliculas", "host": ["{{baseUrl}}"], "path": ["peliculas"] } } },
+        { "name": "Listar películas", "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/peliculas", "host": ["{{baseUrl}}"], "path": ["peliculas"] } } },
+        { "name": "Obtener película por ID", "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/peliculas/1", "host": ["{{baseUrl}}"], "path": ["peliculas", "1"] } } },
+        { "name": "Actualizar película", "request": { "method": "PUT", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"Avengers\",\n  \"duracion\": 144\n}" }, "url": { "raw": "{{baseUrl}}/peliculas/1", "host": ["{{baseUrl}}"], "path": ["peliculas", "1"] } } },
+        { "name": "Eliminar película", "request": { "method": "DELETE", "header": [], "url": { "raw": "{{baseUrl}}/peliculas/6", "host": ["{{baseUrl}}"], "path": ["peliculas", "6"] } } },
+        { "name": "Buscar película por nombre", "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/peliculas/buscar?nombre=inter", "host": ["{{baseUrl}}"], "path": ["peliculas", "buscar"], "query": [{ "key": "nombre", "value": "inter" }] } } },
+        { "name": "Buscar películas por fecha", "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/peliculas/por-fecha?fecha=2026-08-25", "host": ["{{baseUrl}}"], "path": ["peliculas", "por-fecha"], "query": [{ "key": "fecha", "value": "2026-08-25" }] } } }
+      ]
+    },
+    {
+      "name": "Salas",
+      "item": [
+        { "name": "Listar salas", "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/salas", "host": ["{{baseUrl}}"], "path": ["salas"] } } },
+        { "name": "Crear sala", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"Sala 4\"\n}" }, "url": { "raw": "{{baseUrl}}/salas", "host": ["{{baseUrl}}"], "path": ["salas"] } } },
+        { "name": "Actualizar sala", "request": { "method": "PUT", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"Sala Principal\"\n}" }, "url": { "raw": "{{baseUrl}}/salas/1", "host": ["{{baseUrl}}"], "path": ["salas", "1"] } } },
+        { "name": "Eliminar sala", "request": { "method": "DELETE", "header": [], "url": { "raw": "{{baseUrl}}/salas/3", "host": ["{{baseUrl}}"], "path": ["salas", "3"] } } },
+        { "name": "Disponibilidad Sala 1 (<3)", "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/salas/disponibilidad?nombreSala=Sala%201", "host": ["{{baseUrl}}"], "path": ["salas", "disponibilidad"], "query": [{ "key": "nombreSala", "value": "Sala 1" }] } } },
+        { "name": "Disponibilidad Sala 2 (3-5)", "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/salas/disponibilidad?nombreSala=Sala%202", "host": ["{{baseUrl}}"], "path": ["salas", "disponibilidad"], "query": [{ "key": "nombreSala", "value": "Sala 2" }] } } },
+        { "name": "Disponibilidad Sala VIP (>5)", "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/salas/disponibilidad?nombreSala=Sala%20VIP", "host": ["{{baseUrl}}"], "path": ["salas", "disponibilidad"], "query": [{ "key": "nombreSala", "value": "Sala VIP" }] } } }
+      ]
+    },
+    {
+      "name": "Asignaciones",
+      "item": [
+        { "name": "Asignar película", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"idPelicula\": 1,\n  \"idSalaCine\": 1,\n  \"fechaPublicacion\": \"2026-10-01\",\n  \"fechaFin\": \"2026-10-31\"\n}" }, "url": { "raw": "{{baseUrl}}/asignaciones", "host": ["{{baseUrl}}"], "path": ["asignaciones"] } } },
+        { "name": "Listar asignaciones", "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/asignaciones", "host": ["{{baseUrl}}"], "path": ["asignaciones"] } } }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        { "name": "Obtener dashboard", "request": { "method": "GET", "header": [], "url": { "raw": "{{baseUrl}}/dashboard", "host": ["{{baseUrl}}"], "path": ["dashboard"] } } }
+      ]
+    }
+  ]
+}
